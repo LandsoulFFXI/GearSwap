@@ -197,7 +197,7 @@ function customize_melee_set(meleeSet)
     	end
 
     	if player.sub_job ~= 'WAR' then
-    	meleeSet = set_combine(meleeSet, sets.TreasureHunter)
+    		meleeSet = set_combine(meleeSet, sets.TreasureHunter)
     	end
 	end
 
