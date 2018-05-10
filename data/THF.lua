@@ -37,7 +37,7 @@ function user_setup()
 		send_command('bind f11 gs c cycle Kiting')
 		send_command('bind f12 gs c cycle TreasureMode')
 
-		--send_command('bind PAGEUP ws "Evisceration" <t>')
+		--send_command('bind PAGEUP ws "Dancing Edge" <t>')
 		send_command('bind PAGEUP input /ws "Mercy Stroke" <t>')
 		--send_command('bind PAGEDOWN ra <t>')
 		send_command('bind PAGEDOWN ws "Mandalic Stab" <t>')
@@ -69,7 +69,7 @@ function init_gear_sets()
 		
 		sets.midcast.RA = {
 			head="Zha'Go's barbut",			neck="Peacock amulet",		ear1="Drone earring",			ear2="Drone earring",
-			body="Rapparee harness",		hands="Barbarossa's moufles",ring1="Behemoth ring +1",		ring2="Behemoth ring +1",
+			body="Rapparee harness",		hands="Enkidu's Mittens",	ring1="Behemoth ring +1",		ring2="Behemoth ring +1",
      		back="Mamool Ja mantle",		waist="Buccaneer's belt",	legs="Dusk trousers +1",		feet="Homam gambieras"}
 
 		--==[Default melee group]==--
@@ -80,9 +80,9 @@ function init_gear_sets()
 			body="Rapparee Harness",		hands="Dusk Gloves +1",		ring1=TRing1,					ring2=TRing2,
 			back="Cuchulain's Mantle",		waist="Velocious Belt",		legs="Homam Cosciales",			feet="Homam Gambieras"}
 
-		sets.engaged.HNM = set_combine(sets.engaged,{body="Homam Corazza",hands="Homam Manopolas"})
+		sets.engaged.HNM = set_combine(sets.engaged,{body="Homam Corazza",hands="Homam Manopolas",ear1="Hollow Earring"})
 
-        sets.engaged.HNM.WAR = set_combine(sets.engaged.HNM,{ear1="Merman's Earring"})
+        sets.engaged.HNM.WAR = set_combine(sets.engaged.HNM,{})
 
         sets.engaged.WAR = set_combine(sets.engaged,{ear1="Merman's Earring"})
 
@@ -92,15 +92,20 @@ function init_gear_sets()
 
         sets.engaged.Mandau.WAR = set_combine(sets.engaged.WAR,{})
 
-        sets.engaged.Mandau.HNM.WAR = set_combine(sets.engaged.HNM,{ear1="Merman's Earring"})
+        sets.engaged.Mandau.HNM.WAR = set_combine(sets.engaged.HNM,{})
 
-		sets.engaged['Vajra'] = {
+		sets.engaged['Ridill'] = {
 			ammo="Fire Bomblet",
 			head="Walahra Turban",			neck="Ancient Torque",		ear1="Suppanomimi",				ear2="Brutal Earring",
 			body="Rapparee Harness",		hands="Dusk Gloves +1",		ring1=TRing1,					ring2=TRing2,
 			back="Cuchulain's Mantle",		waist="Velocious Belt",		legs="Homam Cosciales",			feet="Homam Gambieras"}
-		
-		sets.precast.RA = {head="Zha'Go's barbut",body="Scorpion Harness +1"}
+
+		sets.engaged.Mandau.cap = set_combine(sets.engaged,{})
+
+		sets.engaged.Mandau.cap.WAR = {
+			head="Patroclus's Helm",		neck="Peacock Amulet",		ear1="Intruder Earring",		ear2="Drone Earring",
+			body="Rapparee Harness",									ring1=TRing1,					ring2=TRing2,
+			back="Amemet Mantle +1",		waist="Velocious Belt",		legs="Garrison Hose",			feet="Bounding Boots"}
 
 		--==[Global WS]==--
 		sets.precast.WS = {
@@ -108,6 +113,9 @@ function init_gear_sets()
 			head="Hecatomb Cap +1",			neck="Fotia Gorget",		ear1="Pixie Earring",			ear2="Brutal Earring",
 			body="Antares harness",			hands="Hct. Mittens +1",	ring1="Rajas Ring",				ring2="Flame Ring",
 			back="Cerberus Mantle +1",		waist="Warwolf Belt",		legs="Hecatomb Subligar +1",	feet="Hecatomb Leggings +1"}
+
+		sets.precast.WS.cap = {
+			head="Empress Hairpin",			neck="Fotia Gorget",ring1="Rajas Ring",waist="Warwolf Belt",legs="Garrison Hose",feet="Hecatomb Leggings +1"}
 
 		--==[Dagger]==--
 		sets.precast.WS['Mercy Stroke']	= set_combine(sets.precast.WS,{body="Hecatomb harness",hands="Alkyoneus's bracelets",ear1="Harmonius Earring"})
@@ -214,7 +222,7 @@ function customize_melee_set(meleeSet)
 	end
 
 	if daytime and player.sub_job == 'WAR' then
-		if state.OffenseMode.value == 'Normal' or 'HNM' then
+		if state.OffenseMode.value == 'Normal' then
 			meleeSet = set_combine(meleeSet,{ear1="Fenrir's earring"})
 		end
 	end
